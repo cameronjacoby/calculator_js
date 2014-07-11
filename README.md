@@ -16,3 +16,9 @@ so something is logged to the console whenever a button is clicked.
 happen? Do you want to the number display? Update the operator display? Clear a
 display? The answer to each of those is "sometimes", right? When, then? How do
 you decide what to do?
+
+--------------------
+
+### Completed project:
+
+| | | | | | | | | | ![ScreenShot](screenshot.png)
