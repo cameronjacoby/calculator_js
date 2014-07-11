@@ -1,15 +1,19 @@
 
 #container {
-	background: grey;
+	background: #CB007F;
 	height: 350px;
 	width: 300px;
 	padding-top: 20px;
 	border: 2px solid;
-    border-color: black;
+    border-color: #120027;
+    margin: 50px auto;
+    border-radius: 5%;
+    font-family: tahoma, sans-serif;
 }
 
 #result_display {
-	background: white;
+	background: #EBFFE2;
+	color: #120027;
 	height: 40px;
 	margin-left: auto;
 	margin-right: auto;
@@ -17,16 +21,16 @@
 	width: 88%;
 	text-align: right;
 	padding-top: 5px;
-	padding-right: 5px;
+	padding-right: 10px;
+	padding-bottom: 5px;
 	font-size: 1.5em;
-
 }
 
 #operator_display {
 	text-align: left;
 	height: 12px;
 	font-size: .75em;
-	padding-left: 5px;
+	padding-left: 10px;
 }
 
 .row {
@@ -36,17 +40,33 @@
 	margin-bottom:10px;
 	width: 90%;
     border: 2px solid;
-    border-color: white;
-
+    border-color: #EBFFE2;
 }
 
 .button {
 	width: 22%;
 	height: 65%;
 	margin: 4px 0px 4px 7px;
-	background: black;
+	background: #FF9E26;
 	text-align: center;
 	padding-top: 10px;
-	color: white;
+	color: #120027;
 	float: left;
+	font-weight: bold;
+}
+
+#plus, #minus, #times, #divided_by, #clear, #enter {
+	background: #EBFFE2;
+}
+
+#calculate-tracker, #heading {
+	text-align: center;
+	margin: 50px auto;
+	font-family: 'Lobster Two', cursive;
+	font-size: 1.8em;
+	color: #120027;
+}
+
+#calculate-tracker {
+	font-size: 1.6em;
 }
