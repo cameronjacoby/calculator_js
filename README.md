@@ -19,6 +19,6 @@ you decide what to do?
 
 --------------------
 
-**Completed project:**
+### Completed project:
 
-![ScreenShot](screenshot.png)
+| | | | | ![ScreenShot](screenshot.png)
