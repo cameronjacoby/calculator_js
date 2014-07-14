@@ -1,3 +1,6 @@
+body {
+	cursor: default;
+}
 
 #container {
 	background: #CB007F;
@@ -53,6 +56,7 @@
 	color: #120027;
 	float: left;
 	font-weight: bold;
+	cursor: pointer;
 }
 
 #plus, #minus, #times, #divided_by, #clear, #enter {

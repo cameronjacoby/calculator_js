@@ -32,15 +32,13 @@ window.onload = function() {
   var operatorDisplay = document.getElementById("operator_display");
   var resultDisplay = document.getElementById("result_display_value");
 
-  // a div to hold text alerts during and after calculations
+  // div to hold text alerts during and after calculations
 
   var calculateTracker = document.getElementById("calculate-tracker");
 
   // number declarations
 
-  var currentNum = "";
-  var previousNum = "";
-  var operator = "";
+  var hiddenNum = "";
 
 
   ////////// FUNCTIONS
@@ -52,10 +50,26 @@ window.onload = function() {
       console.log(numberButton.innerHTML + ' was clicked!!!');
       calculateTracker.innerHTML = 'Calculating..........';
       resultDisplay.innerHTML += numberButton.innerHTML;
-      currentNum = resultDisplay.innerHTML;
-      console.log('The current number is: ' + currentNum);
-      console.log('The previous number is: ' + previousNum);
+
+      console.log('The result display reads: ' + resultDisplay.innerHTML);
     }
+  }
+
+  // operations function
+
+  var operations = function() {
+    if (operatorDisplay.innerHTML === "+") {
+      resultDisplay.innerHTML = parseInt(hiddenNum) + parseInt(resultDisplay.innerHTML);
+    }
+    else if (operatorDisplay.innerHTML === "-") {
+      resultDisplay.innerHTML = parseInt(hiddenNum) - parseInt(resultDisplay.innerHTML);
+    }
+    else if (operatorDisplay.innerHTML === "*") {
+      resultDisplay.innerHTML = parseInt(hiddenNum) * parseInt(resultDisplay.innerHTML);
+    }
+    else if (operatorDisplay.innerHTML === "/") {
+      resultDisplay.innerHTML = parseInt(hiddenNum) / parseInt(resultDisplay.innerHTML);
+    } 
   }
 
   // operator button function
@@ -63,30 +77,23 @@ window.onload = function() {
   var operatorFunction = function(operatorButton) {
     operatorButton.onclick = function(event) {
       console.log(operatorButton.innerHTML + ' was clicked!!!');
-      operatorDisplay.innerHTML = operatorButton.innerHTML;
+      
+      if (resultDisplay.innerHTML !== "" && hiddenNum !== undefined) {
+        operations(); 
+      }
+
+      hiddenNum = resultDisplay.innerHTML;
+      console.log('The held number is: ' + hiddenNum);
+
       resultDisplay.innerHTML = "";
-
-      previousNum = currentNum;
-
-      if (operatorButton === plusButton) {
-        operator = "+";
-      } 
-      else if (operatorButton === minusButton) {
-        operator = "-";
-      }
-      else if (operatorButton === timesButton) {
-        operator = "*";
-      }
-      else if (operatorButton === dividedByButton) {
-        operator = "/";
-      }
+      operatorDisplay.innerHTML = operatorButton.innerHTML;
     }
   }
 
   // clear function
 
   var clearFunction = function(button, display) {
-    console.log('CLEARING!!!');
+    console.log('CLEARING!!!!!');
     display.innerHTML = "";
   }
 
@@ -97,15 +104,13 @@ window.onload = function() {
 
   clearButton.onclick = function(event) {
     console.log('CLEAR was clicked!!!');
+
     clearFunction(clearButton, operatorDisplay);
     clearFunction(clearButton, resultDisplay);
+
     calculateTracker.innerHTML = "";
-    console.log('The current number was: ' + currentNum);
-    currentNum = 0;
-    console.log('But now it is: ' + currentNum);
-    console.log('The previous number was: ' + previousNum);
-    previousNum = 0;
-    console.log('But now it is: ' + previousNum);
+    hiddenNum = "";
+
   }
 
   // enter button
@@ -113,30 +118,29 @@ window.onload = function() {
   enterButton.onclick = function(event) {
     console.log('ENTER was clicked!!!');
 
-    // clears both displays
-    clearFunction(enterButton, operatorDisplay);
-    clearFunction(enterButton, resultDisplay);
+    if (resultDisplay.innerHTML === "") {
 
-    // performs operations on the stored numbers
-    if (operator === "+") {
-      var result = parseInt(previousNum) + parseInt(currentNum);
+      if (operatorDisplay.innerHTML === "+") {
+        resultDisplay.innerHTML = parseInt(hiddenNum) + parseInt(hiddenNum);
+      }
+      else if (operatorDisplay.innerHTML === "-") {
+        resultDisplay.innerHTML = parseInt(hiddenNum) - parseInt(hiddenNum);
+      }
+      else if (operatorDisplay.innerHTML === "*") {
+        resultDisplay.innerHTML = parseInt(hiddenNum) * parseInt(hiddenNum);
+      }
+      else if (operatorDisplay.innerHTML === "/") {
+        resultDisplay.innerHTML = parseInt(hiddenNum) / parseInt(hiddenNum);
+      }
     }
-    else if (operator === "-") {
-      var result = parseInt(previousNum) - parseInt(currentNum);
+
+    else {
+      operations();
     }
-    else if (operator === "*") {
-      var result = parseInt(previousNum) * parseInt(currentNum);
-    }
-    else if (operator === "/") {
-      var result = parseInt(previousNum) / parseInt(currentNum);
-    }
-    previousNum = currentNum;
-    resultDisplay.innerHTML = result;
-    console.log('The result is: ' + result);
-    currentNum = result;
-    console.log('The current number is: ' + currentNum);
-    console.log('The previous number is: ' + previousNum);
-    calculateTracker.innerHTML = 'The result is: ' + result;
+ 
+    clearFunction(enterButton, operatorDisplay);
+    console.log('The result is: ' + resultDisplay.innerHTML);
+    calculateTracker.innerHTML = 'The result is: ' + resultDisplay.innerHTML;
   }
 
 
@@ -161,6 +165,5 @@ window.onload = function() {
   operatorFunction(minusButton);
   operatorFunction(timesButton);
   operatorFunction(dividedByButton);
-
 
 }
