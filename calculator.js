@@ -30,6 +30,10 @@ window.onload = function() {
   var operatorDisplay = document.getElementById("operator_display");
   var resultDisplay = document.getElementById("result_display_value");
 
+  if (resultDisplay.innerHTML === NaN) {
+    resultDisplay.innerHTML = "";
+  }
+
   // variable holds hidden number
 
   var hiddenNum = "";
@@ -40,7 +44,7 @@ window.onload = function() {
     numberButton.onclick = function(event) {
       resultDisplay.innerHTML += numberButton.innerHTML;
     }
-  }
+  };
 
   // number function calls
 
@@ -70,7 +74,7 @@ window.onload = function() {
     else if (operatorDisplay.innerHTML === "/") {
       resultDisplay.innerHTML = parseInt(hiddenNum) / parseInt(resultDisplay.innerHTML);
     } 
-  }
+  };
 
   // operator button function
 
@@ -83,7 +87,7 @@ window.onload = function() {
       resultDisplay.innerHTML = "";
       operatorDisplay.innerHTML = operatorButton.innerHTML;
     }
-  }
+  };
 
   // operator function calls
 
@@ -96,7 +100,7 @@ window.onload = function() {
 
   var clearFunction = function(button, display) {
     display.innerHTML = "";
-  }
+  };
 
   // clear button
 
