@@ -30,10 +30,6 @@ window.onload = function() {
   var operatorDisplay = document.getElementById("operator_display");
   var resultDisplay = document.getElementById("result_display_value");
 
-  if (resultDisplay.innerHTML === NaN) {
-    resultDisplay.innerHTML = "";
-  }
-
   // variable holds hidden number
 
   var hiddenNum = "";
@@ -113,7 +109,10 @@ window.onload = function() {
   // enter button
 
   enterButton.onclick = function(event) {
-    if (resultDisplay.innerHTML === "") {
+    if (resultDisplay.innerHTML === "" && hiddenNum === "") {
+      resultDisplay.innerHTML = "";
+    } 
+    else if (resultDisplay.innerHTML === "") {
       if (operatorDisplay.innerHTML === "+") {
         resultDisplay.innerHTML = parseInt(hiddenNum) + parseInt(hiddenNum);
       }
@@ -130,7 +129,6 @@ window.onload = function() {
     else {
       operations();
     }
- 
     clearFunction(enterButton, operatorDisplay);
   }
 
