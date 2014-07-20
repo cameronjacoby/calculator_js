@@ -1,7 +1,5 @@
 window.onload = function() {
 
-  ////////// VARIABLE DECLARATIONS
-
   // number button variable declarations
 
   var zeroButton = document.getElementById("zero");
@@ -32,28 +30,30 @@ window.onload = function() {
   var operatorDisplay = document.getElementById("operator_display");
   var resultDisplay = document.getElementById("result_display_value");
 
-  // div to hold text alerts during and after calculations
-
-  var calculateTracker = document.getElementById("calculate-tracker");
-
-  // number declarations
+  // variable holds hidden number
 
   var hiddenNum = "";
-
-
-  ////////// FUNCTIONS
 
   // number button function
 
   var numberFunction = function(numberButton) {
     numberButton.onclick = function(event) {
-      console.log(numberButton.innerHTML + ' was clicked!!!');
-      calculateTracker.innerHTML = 'Calculating..........';
       resultDisplay.innerHTML += numberButton.innerHTML;
-
-      console.log('The result display reads: ' + resultDisplay.innerHTML);
     }
   }
+
+  // number function calls
+
+  numberFunction(zeroButton);
+  numberFunction(oneButton);
+  numberFunction(twoButton);
+  numberFunction(threeButton);
+  numberFunction(fourButton);
+  numberFunction(fiveButton);
+  numberFunction(sixButton);
+  numberFunction(sevenButton);
+  numberFunction(eightButton);
+  numberFunction(nineButton);
 
   // operations function
 
@@ -76,50 +76,40 @@ window.onload = function() {
 
   var operatorFunction = function(operatorButton) {
     operatorButton.onclick = function(event) {
-      console.log(operatorButton.innerHTML + ' was clicked!!!');
-      
       if (resultDisplay.innerHTML !== "" && hiddenNum !== undefined) {
         operations(); 
       }
-
       hiddenNum = resultDisplay.innerHTML;
-      console.log('The held number is: ' + hiddenNum);
-
       resultDisplay.innerHTML = "";
       operatorDisplay.innerHTML = operatorButton.innerHTML;
     }
   }
 
+  // operator function calls
+
+  operatorFunction(plusButton);
+  operatorFunction(minusButton);
+  operatorFunction(timesButton);
+  operatorFunction(dividedByButton);
+
   // clear function
 
   var clearFunction = function(button, display) {
-    console.log('CLEARING!!!!!');
     display.innerHTML = "";
   }
-
-
-  ////////// CLEAR & ENTER
 
   // clear button
 
   clearButton.onclick = function(event) {
-    console.log('CLEAR was clicked!!!');
-
     clearFunction(clearButton, operatorDisplay);
     clearFunction(clearButton, resultDisplay);
-
-    calculateTracker.innerHTML = "";
     hiddenNum = "";
-
   }
 
   // enter button
 
   enterButton.onclick = function(event) {
-    console.log('ENTER was clicked!!!');
-
     if (resultDisplay.innerHTML === "") {
-
       if (operatorDisplay.innerHTML === "+") {
         resultDisplay.innerHTML = parseInt(hiddenNum) + parseInt(hiddenNum);
       }
@@ -133,37 +123,15 @@ window.onload = function() {
         resultDisplay.innerHTML = parseInt(hiddenNum) / parseInt(hiddenNum);
       }
     }
-
     else {
       operations();
     }
  
     clearFunction(enterButton, operatorDisplay);
-    console.log('The result is: ' + resultDisplay.innerHTML);
-    calculateTracker.innerHTML = 'The result is: ' + resultDisplay.innerHTML;
   }
 
-
-  ////////// FUNCTION CALLS
-
-  // number function calls
-
-  numberFunction(zeroButton);
-  numberFunction(oneButton);
-  numberFunction(twoButton);
-  numberFunction(threeButton);
-  numberFunction(fourButton);
-  numberFunction(fiveButton);
-  numberFunction(sixButton);
-  numberFunction(sevenButton);
-  numberFunction(eightButton);
-  numberFunction(nineButton);
-
-  // operator function calls
-
-  operatorFunction(plusButton);
-  operatorFunction(minusButton);
-  operatorFunction(timesButton);
-  operatorFunction(dividedByButton);
-
 }
+
+
+
+

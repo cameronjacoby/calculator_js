@@ -63,7 +63,7 @@ body {
 	background: #EBFFE2;
 }
 
-#calculate-tracker, #heading {
+#heading {
 	text-align: center;
 	margin: 50px auto;
 	font-family: 'Lobster Two', cursive;
@@ -71,6 +71,6 @@ body {
 	color: #120027;
 }
 
-#calculate-tracker {
-	font-size: 1.6em;
-}
+
+
+

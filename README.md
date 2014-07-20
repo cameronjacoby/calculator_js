@@ -21,4 +21,4 @@ you decide what to do?
 
 ### Completed project:
 
-| | | | | | | | | | ![ScreenShot](screenshot.png)
+![ScreenShot](screenshot.png)
